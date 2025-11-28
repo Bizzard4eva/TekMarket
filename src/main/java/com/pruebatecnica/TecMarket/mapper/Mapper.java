@@ -8,9 +8,6 @@ import com.pruebatecnica.TecMarket.entity.Producto;
 import com.pruebatecnica.TecMarket.entity.Sucursal;
 import com.pruebatecnica.TecMarket.entity.Venta;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Mapper {
 
     public static ProductoDto toDto(Producto producto) {
@@ -83,4 +80,5 @@ public class Mapper {
                 .total(total)
                 .build();
     }
+
 }
