@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter @Setter @Builder
+@Entity @Getter @Setter @Builder
 @AllArgsConstructor @NoArgsConstructor
 public class Venta {
 

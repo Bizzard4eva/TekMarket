@@ -3,7 +3,7 @@ package com.pruebatecnica.TecMarket.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-@Getter @Setter @Builder
+@Entity @Getter @Setter @Builder
 @AllArgsConstructor @NoArgsConstructor
 public class DetalleVenta {
 

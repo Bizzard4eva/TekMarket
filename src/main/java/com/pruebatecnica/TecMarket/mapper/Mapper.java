@@ -7,6 +7,8 @@ import com.pruebatecnica.TecMarket.entity.Dto.VentaDto;
 import com.pruebatecnica.TecMarket.entity.Producto;
 import com.pruebatecnica.TecMarket.entity.Sucursal;
 import com.pruebatecnica.TecMarket.entity.Venta;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 public class Mapper {
 
