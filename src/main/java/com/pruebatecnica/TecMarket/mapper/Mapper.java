@@ -10,6 +10,8 @@ import com.pruebatecnica.TecMarket.entity.Venta;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.util.stream.Collectors;
+
 public class Mapper {
 
     public static ProductoDto toDto(Producto producto) {
@@ -20,6 +22,7 @@ public class Mapper {
                 .nombre(producto.getNombre())
                 .categoria(producto.getCategoria())
                 .precio(producto.getPrecio())
+                .stock(producto.getStock())
                 .build();
     }
 
@@ -64,11 +67,13 @@ public class Mapper {
                                 .id(detalle.getId())
                                 .producto(detalle.getProducto().getNombre())
                                 .cantidad(detalle.getCantidad())
-                                .precio(detalle.getPrecio())
-                                .subtotal(detalle.getPrecio() * detalle.getCantidad())
+//                                .precio(detalle.getPrecio())
+//                                .subtotal(detalle.getPrecio() * detalle.getCantidad())
+                                .subtotal(detalle.getSubtotal())
                                 .build()
                 )
-                .toList();
+//                .toList();
+                .collect(Collectors.toList());
         var total = detalles.stream()
                         .map(DetalleVentaDto::getSubtotal)
                 .reduce(0.0, Double::sum);

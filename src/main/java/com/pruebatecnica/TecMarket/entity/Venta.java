@@ -21,6 +21,6 @@ public class Venta {
     @ManyToOne
     private Sucursal sucursal;
 
-    @OneToMany(mappedBy = "venta")
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     private List<DetalleVenta> detalles = new ArrayList<>();
 }

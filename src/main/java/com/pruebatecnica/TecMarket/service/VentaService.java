@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -54,12 +55,14 @@ public class VentaService implements IVenta {
                                 .venta(ventaConId)
                                 .producto(producto)
                                 .cantidad(detalle.getCantidad())
-                                .precio(detalle.getPrecio())
+//                                .precio(detalle.getPrecio())
+                                .subtotal(producto.getPrecio() * detalle.getCantidad())
                                 .build();
                 })
-                .toList();
+                .collect(Collectors.toList());
         ventaConId.setDetalles(detalles);
-        ventaConId.setTotal(detalles.stream().mapToDouble(d -> d.getPrecio() * d.getCantidad()).sum());
+//        ventaConId.setTotal(detalles.stream().mapToDouble(d -> d.getPrecio() * d.getCantidad()).sum());
+        ventaConId.setTotal(detalles.stream().mapToDouble(DetalleVenta::getSubtotal).sum());
 
         return Mapper.toDto(ventaRepository.save(ventaConId));
     }

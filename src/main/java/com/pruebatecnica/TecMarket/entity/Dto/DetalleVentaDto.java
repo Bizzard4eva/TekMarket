@@ -9,6 +9,6 @@ public class DetalleVentaDto {
     private Long id;
     private String producto;
     private Integer cantidad;
-    private Double precio;
+//    private Double precio;
     private Double subtotal;
 }
