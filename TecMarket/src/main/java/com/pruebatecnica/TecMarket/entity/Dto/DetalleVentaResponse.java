@@ -2,13 +2,12 @@ package com.pruebatecnica.TecMarket.entity.Dto;
 
 import lombok.*;
 
-@Getter @Setter @Builder
+@Builder @Getter @Setter
 @AllArgsConstructor @NoArgsConstructor
-public class DetalleVentaDto {
+public class DetalleVentaResponse {
 
     private Long id;
     private String producto;
     private Integer cantidad;
-//    private Double precio;
     private Double subtotal;
 }

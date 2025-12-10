@@ -5,16 +5,14 @@ import lombok.*;
 import java.time.LocalDate;
 import java.util.List;
 
-@Getter @Setter @Builder
+@Builder @Getter @Setter
 @AllArgsConstructor @NoArgsConstructor
-public class VentaDto {
+public class VentaResponse {
 
     private Long id;
     private LocalDate fecha;
     private String estado;
-    // Sucursal
     private Long idSucursal;
-    // Lista de Detalles
-    private List<DetalleVentaDto> detalles;
+    private List<DetalleVentaResponse> detalles;
     private Double total;
 }

@@ -1,28 +1,32 @@
 services:
-  tecmarket: #nombre de la app que aparece en properties .name
-    build: TecMarket #nombre de la carpeta del proyecto donde esta el Dockerfile
-    mem_limit: 512m
+  tecmarket-app:
+    build: ./TecMarket
     ports:
-      - "8080:8080" #puerto del host:puerto del contenedor
+      - "8080:8080"
     environment:
-      DB_URL:   jdbc:mysql://tecmarket-db:3306/TecMarket?createDatabaseIfNotExist=true&serverTimezone=UTC
+      DB_URL:   jdbc:mysql://tecmarket-db:3306/tecmarket?createDatabaseIfNotExist=true&serverTimezone=UTC
       DB_USERNAME:  root
-      DB_PASSWORD:  Sherlock0
+      DB_PASSWORD:  12345
     depends_on:
-      tecmarket-db: #nombre del servicio de la base de datos
+      tecmarket-db:
         condition: service_healthy
     restart: always
 
-  tecmarket-db: #configuraciones de la base de datos dockerizada
-    image: mysql:8.0.33 #misma version que la del POM.xml
+  tecmarket-db:
+    image: mysql:8.4
     environment:
-      MYSQL_ROOT_PASSWORD: Sherlock0
-      MYSQL_PASSWORD: Sherlock0
-      MYSQL_DATABASE: TecMarket
+      MYSQL_ROOT_PASSWORD: 12345
+      MYSQL_PASSWORD: 12345
+      MYSQL_DATABASE: tecmarket
     ports:
       - "3307:3306"
+    volumes:
+      - tecmarket_data:/var/lib/mysql
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 10s
       retries: 10
     restart: always
+
+volumes:
+  tecmarket_data:

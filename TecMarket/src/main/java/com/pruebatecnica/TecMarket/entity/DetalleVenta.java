@@ -18,6 +18,8 @@ public class DetalleVenta {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_producto")
     private Producto producto;
+    @Column(nullable = false)
     private Integer cantidad;
+    @Column(nullable = false)
     private Double subtotal;
 }

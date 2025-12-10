@@ -14,8 +14,11 @@ public class Venta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private LocalDate fecha;
+    @Column(nullable = false)
     private String estado;
+    @Column(nullable = false)
     private Double total;
 
     @ManyToOne
